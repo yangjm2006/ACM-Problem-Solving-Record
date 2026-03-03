@@ -1,0 +1,1 @@
+{"name":"Local: P5170_Euclid-Like","url":"c:\\Users\\19673\\Desktop\\OI\\ACM\\Luogu\\P5170_Euclid-Like.cpp","tests":[{"id":1771669294955,"input":"2\n2 1 0 2\n4 3 9 6","output":"1 1 2\n11 27 27"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\19673\\Desktop\\OI\\ACM\\Luogu\\P5170_Euclid-Like.cpp","group":"local","local":true}

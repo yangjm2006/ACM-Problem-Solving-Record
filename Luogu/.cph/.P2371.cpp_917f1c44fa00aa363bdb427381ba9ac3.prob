@@ -1,0 +1,1 @@
+{"name":"Local: P2371","url":"c:\\Users\\19673\\Desktop\\OI\\ACM\\Luogu\\P2371.cpp","tests":[{"id":1770472775503,"input":"6 20 100000\n0 31 10 23 14 13","output":"99975\n0 31 42 13 14 45 26 27 28 39"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\19673\\Desktop\\OI\\ACM\\Luogu\\P2371.cpp","group":"local","local":true}
