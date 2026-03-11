@@ -11,7 +11,7 @@ void __(){
     ll f=0,cnt=0;
     for(int i=2;i<=n;i++){
         if(x[i]!=(x[i-1]+1)%m) f=1;
-        if(x[i]<x[i-1]) cnt++;
+        if(x[i]<=x[i-1]) cnt++;
     }
     // cout<<cnt*m+x[n]+1<<"!!\n";
     cout<<a*(cnt*m+x[n]+1)+f*c+b*(cnt*m+x[n]+1-n);
@@ -20,4 +20,4 @@ int main(){
     ios::sync_with_stdio(0);cin.tie(0);
     __();
 	return 0;
-} 
+}
