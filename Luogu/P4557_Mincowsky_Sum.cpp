@@ -6,22 +6,22 @@ struct Point{
     ll x,y;
     Point(){}
     Point(ll x,ll y):x(x),y(y){}
-    Point operator + (const Point &_){
+    Point operator + (const Point &_) const{
         return Point(x+_.x,y+_.y);
     }
-    Point operator - (const Point &_){
+    Point operator - (const Point &_) const{
         return Point(x-_.x,y-_.y);
     }
-    bool operator < (const Point &_){
+    bool operator < (const Point &_) const{
         return x<_.x||(x==_.x&&y<_.y);
     }
-    ll operator * (const Point &_){
+    ll operator * (const Point &_) const{
         return x*_.x+y*_.y;
     }
-    ll operator ^ (const Point &_){
+    ll operator ^ (const Point &_) const{
         return x*_.y-y*_.x;
     }
-    ll operator / (const Point &_){
+    ll operator / (const Point &_) const{
         return x*_.y==y*_.x;
     }
 };
