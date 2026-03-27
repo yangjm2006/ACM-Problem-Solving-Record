@@ -17,7 +17,7 @@ bool operator != (Point a,Point b){
     return (a.x!=b.x)||(a.y!=b.y)||(a.id!=b.id);
 }
 struct Line{
-    ll x,y1,y2;int id1,id2;
+    ll x,y1,y2;int id1,id2;int t1,t2;
 }l[N];
 struct edge{
     int v;
@@ -44,7 +44,6 @@ double spfa(){
             }
         }
     }
-    // for(int i=1;i<=t;i++) cout<<dis[i]<<" ";cout<<"!!!!!\n";
     return dis[t];
 }
 int cnt;
@@ -65,8 +64,6 @@ void make(Point p){
     if(U.id){
         e[p.id].push_back((edge){U.id,distance(U,p)});
         if(U!=D) e[p.id].push_back((edge){D.id,distance(D,p)});
-        // cout<<p.id<<" "<<U.id<<" "<<distance(U,p)<<"++\n";
-        // if(U!=D) cout<<p.id<<" "<<D.id<<" "<<distance(D,p)<<"++\n";
     }
 }
 Point S,T;
@@ -88,20 +85,34 @@ int main(){
     double V;
     cin>>V;
     for(int i=1;i<=n-1;i++){
-        l[i]=(Line){b[i].x,max(a[i].y,a[i+1].y),min(b[i].y,b[i+1].y),i,n+i};
+        int t1,t2;
+        if(a[i].y>a[i+1].y) t1=1;
+        else if(a[i].y<a[i+1].y) t1=2;
+        if(b[i].y>b[i+1].y) t2=1;
+        else if(b[i].y<b[i+1].y) t2=2;
+        l[i]=(Line){b[i].x,max(a[i].y,a[i+1].y),min(b[i].y,b[i+1].y),i,n+i,t1,t2};
     }
     s=n+n+1;t=s+1;
-    bool f=0;
     for(int i=1;i<=n-1;i++){
-        if(l[i].x>=S.x&&l[i].x<=T.x){
+        if(l[i].x>S.x&&l[i].x<T.x){
             vec.push_back(l[i]);
-            // cout<<l[i].x<<" "<<l[i].y1<<" "<<l[i].y2<<"==\n";
         }
-        if(l[i].x>S.x&&l[i].x<T.x) f=1;
-    }
-    if(!f){
-        cout<<fixed<<setprecision(6)<<distance(S,T)/V;
-        return 0;
+        if(l[i].x==S.x){
+            if(S.y<l[i].y1&&l[i].t1==2){
+                vec.push_back(l[i]);
+            }
+            if(S.y>l[i].y2&&l[i].t2==1){
+                vec.push_back(l[i]);
+            }
+        }
+        if(l[i].x==T.x){
+            if(T.y<l[i].y1&&l[i].t1==1){
+                vec.push_back(l[i]);
+            }
+            if(T.y>l[i].y2&&l[i].t2==2){
+                vec.push_back(l[i]);
+            }
+        }
     }
     vec.push_back((Line){T.x,T.y,T.y,t,t});
     make_group();
