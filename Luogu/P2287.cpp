@@ -2,7 +2,6 @@
 using namespace std;
 const int N=110;
 const double eps=1e-12;
-
 struct Point{
     double x,y,z;
 }p[N];
