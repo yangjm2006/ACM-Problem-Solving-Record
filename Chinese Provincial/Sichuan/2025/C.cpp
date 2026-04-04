@@ -1,46 +1,56 @@
 #include <bits/stdc++.h>
-typedef long long ll;
-#define PII pair<ll, ll>
 using namespace std;
-
-const ll N = 1e5 + 10;
-
-vector<ll> factor(ll x)
+const int N = 1e5 + 10;
+double dp[N];
+vector<int> d[N];
+void work()
 {
-    vector<ll> ret;
-    for (ll i = 2; i * i <= x; i++)
+    for (int i = 1; i <= 100000; i++)
     {
-        if (x % i == 0)
+        double sum = 0;
+        for (auto j : d[i])
         {
-            ret.push_back(i);
-            if ()
+            sum += dp[j - 1];
         }
+        dp[i] = min(dp[i - 1], sum / d[i].size()) + 1;
     }
 }
-
-void solve()
-{
-}
-
 int main()
 {
-    ios::sync_with_stdio(false);
+    ios::sync_with_stdio(0);
     cin.tie(0);
-    cout.tie(0);
-    int t;
-    cin >> t;
-    while (t--)
+    int n, q;
+    cin >> n >> q;
+    for (int i = 1; i <= 100000; i++)
     {
-        solve();
+        for (int j = 1; j * j <= i; j++)
+        {
+            if (i % j == 0)
+            {
+                d[i].push_back(j);
+                if (j * j != i)
+                {
+                    d[i].push_back(i / j);
+                }
+            }
+        }
+        for (int j = 2 * i; j <= n; j += i)
+        {
+            d[i].push_back(j);
+        }
+    }
+    for (int i = 1; i <= 100000; i++)
+        dp[i] = i;
+    for (int i = 1; i <= 200; i++)
+    {
+        work();
+    }
+    cout << fixed << setprecision(7);
+    while (q--)
+    {
+        int x;
+        cin >> x;
+        cout << dp[x] << '\n';
     }
     return 0;
 }
-/*
-1
-300 4
-1 2 1 1
-2 3 1 1
-3 2 1 1
-3 300 1 1
-
-*/
