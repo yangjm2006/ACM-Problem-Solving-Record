@@ -1,3 +1,6 @@
-class Point {
-   private:
+class Date {
+private:
+    int _date;
+
+public:
 };
