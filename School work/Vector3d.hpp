@@ -1,6 +1,7 @@
 #pragma once
 #include <istream>
 #include <ostream>
+
 class Vector3d {
 public:
     double x, y, z;
