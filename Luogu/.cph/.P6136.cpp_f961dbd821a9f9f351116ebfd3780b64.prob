@@ -1,0 +1,1 @@
+{"name":"Local: P6136","url":"c:\\Users\\19673\\Desktop\\ACM-Problem-Solving-Record\\Luogu\\P6136.cpp","tests":[{"id":1776567424089,"input":"6 7\n1 1 4 5 1 4\n2 1\n1 9\n4 1\n5 8\n3 13\n6 7\n1 4\n","output":"6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\19673\\Desktop\\ACM-Problem-Solving-Record\\Luogu\\P6136.cpp","group":"local","local":true}
