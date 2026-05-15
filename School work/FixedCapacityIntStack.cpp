@@ -1,28 +1,26 @@
 class FixedCapacityIntStack {
 private:
-    unsigned int _capacity, _size;
-    int* _buffer;
+	const unsigned int cap;
+	unsigned int len;
+	int* buf;
 
 public:
-    FixedCapacityIntStack(unsigned int capacity)
-        : _capacity(capacity), _size(0), _buffer(new int[capacity]) {}
-    FixedCapacityIntStack(const FixedCapacityIntStack& other)
-        : _capacity(other._capacity), _size(other._size), _buffer(nullptr) {
-        _buffer = new int[_capacity];
-        for (int i = 0; i < _size; i++) _buffer[i] = other._buffer[i];
-    }
-    ~FixedCapacityIntStack() { delete[] _buffer; }
+	FixedCapacityIntStack(unsigned int capacity) : cap(capacity), len(0), buf(new int[capacity]) {}
 
-    unsigned int capacity() const { return _capacity; }
-    unsigned int size() const { return _size; }
+	~FixedCapacityIntStack() { delete[] buf; }
 
-    bool empty() const { return _size == 0; }
-    bool full() const { return _size == _capacity; }
+	unsigned int capacity() const { return cap; }
+	unsigned int size() const { return len; }
 
-    void push(int x) {
-        _buffer[_size] = x;
-        _size++;
-    }
-    void pop() { _size--; }
-    int top() const { return _buffer[_size - 1]; }
+	bool empty() const { return len == 0; }
+	bool full() const { return len == cap; }
+
+	void push(int x) { buf[len++] = x; }
+	void pop() { len--; }
+	int top() const { return buf[len - 1]; }
+
+	FixedCapacityIntStack(const FixedCapacityIntStack& other)
+		: cap(other.capacity()), len(other.size()), buf(new int[cap]) {
+		for (int i = 0; i < len; i++) buf[i] = other.buf[i];
+	}
 };

@@ -49,9 +49,7 @@ public:
 	}
 
 	String(const String& other)
-		: m_len(other.m_len),
-		  m_cap(other.m_cap),
-		  m_buf(new char[other.m_cap + 1]) {
+		: m_len(other.m_len), m_cap(other.m_cap), m_buf(new char[other.m_cap + 1]) {
 		std::memcpy(m_buf, other.m_buf, m_len);
 		m_buf[m_len] = '\0';
 	}
