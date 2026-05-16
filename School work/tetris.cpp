@@ -8,36 +8,32 @@ namespace tetris {
 		virtual ~Tetromino() = default;
 
 	private:
-		char direction = 0;
+		char dir;
 
 	public:
 		virtual void print(std::ostream& os) const = 0;
-		virtual void rotate(int x) {
-			int drt = direction + x;
-			direction = static_cast<char>(drt % 4 + 4) % 4;
-		}
 
-		int orientation() const { return direction; }
+		virtual void rotate(int x) { dir = ((dir + x) % 4 + 4) % 4; }
+
+		int orientation() const { return dir; }
 	};
 
 	class ITetromino : public Tetromino {
-	private:
-		inline static int count = 0;
-
 	public:
-		ITetromino() { ++count; }
-		ITetromino(const ITetromino& other) { ++count; }
-		~ITetromino() override { --count; }
+		inline static int counter = 0;
+
+		ITetromino() { ++counter; }
+		ITetromino(const ITetromino& other) { ++counter; }
+		~ITetromino() { --counter; }
 
 		void print(std::ostream& os) const override {
-			char drt = orientation();
-			if (drt == 0 || drt == 2) {
+			if (orientation() % 2 == 0) {
 				os << "####\n";
 			} else {
 				os << "#\n#\n#\n#\n";
 			}
 		}
 
-		static int instance_count() { return count; }
+		static int instance_count() { return counter; }
 	};
 }  // namespace tetris

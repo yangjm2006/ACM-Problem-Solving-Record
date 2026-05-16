@@ -1,5 +1,4 @@
 template <typename T>
-const auto& my_min(const T& a, const T& b) {
-    if (a < b) return a;
-    return b;
+const T& my_min(const T& a, const T& b) {
+	return a < b ? a : b;
 }

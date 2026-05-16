@@ -1,11 +1,12 @@
 struct Base {
 	int v;
 
-	Base(int v) : v(v) {}
+	Base(int tv) : v{tv} {}
+
 	virtual ~Base() = default;
 
 	virtual Base& operator=(const Base& other) {
-		v = other.v;
+		this->v = other.v;
 		return *this;
 	}
 };
@@ -13,13 +14,12 @@ struct Base {
 struct Derived : public Base {
 	int w;
 
-	Derived(int v, int w) : Base(v), w(w) {}
+	Derived(int tv, int tw) : Base{tv}, w{tw} {}
 
 	Derived& operator=(const Base& other) override {
-		Base::operator=(other);
-		const Derived* d = dynamic_cast<const Derived*>(&other);
-		if (d != nullptr) {
-			w = d->w;
+		v = other.v;
+		if (const Derived* p = dynamic_cast<const Derived*>(&other)) {
+			w = p->w;
 		}
 		return *this;
 	}
