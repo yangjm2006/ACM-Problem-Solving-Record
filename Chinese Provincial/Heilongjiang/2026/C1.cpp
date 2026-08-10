@@ -15,7 +15,7 @@ void __() {
 		sort(v.begin(), v.end());
 		st.insert(v[1]);
 	}
-	cout << (n + 1) / 2 << " " << st.size() << '\n';
+	cout << st.size() << '\n';
 }
 int main() {
 	ios::sync_with_stdio(0);
