@@ -1,1 +1,0 @@
-{"name":"Local: P3375_KMP","url":"c:\\Users\\19673\\Desktop\\ACM-Problem-Solving-Record\\Luogu\\P3375_KMP.cpp","tests":[{"id":1788184098578,"input":"ABABABC\nABA\n","output":"1\n3\n0 0 1 \n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\19673\\Desktop\\ACM-Problem-Solving-Record\\Luogu\\P3375_KMP.cpp","group":"local","local":true}
